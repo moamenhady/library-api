@@ -71,21 +71,26 @@ Access the API at http://localhost:8080/
 
 A default admin user with username `admin` and password `admin` is created in the databse on application run.
 
-Books:
-
-- **GET /api/books :** Retrieve a list of all books.
-- **GET /api/books/{id} :** Retrieve details of a specific book by ID.
-- **POST /api/books :** Add a new book to the library.
-- **PUT /api/books/{id} :** Update an existing book's information.
-- **DELETE /api/books/{id} :** Remove a book from the library.
-
 Patrons:
 
-- **GET /api/patrons :** Retrieve a list of all patrons.
-- **GET /api/patrons/{id} :** Retrieve details of a specific patron by ID.
-- **POST /api/patrons :** Add a new patron to the system.
-- **PUT /api/patrons/{id} :** Update an existing patron's information.
-- **DELETE /api/patrons/{id} :** Remove a patron from the system.
+- **GET /api/patrons :** Retrieve a list of all patrons. (Requires admin authentication)
+- **GET /api/patrons/{id} :** Retrieve details of a specific patron by ID. (Requires admin authentication)
+- **POST /api/patrons :** Add a new patron to the system. (Requires no authentication - any one can signup as a patron)
+- **PUT /api/patrons/{id} :** Update an existing patron's information. (Requires admin authentication)
+- **DELETE /api/patrons/{id} :** Remove a patron from the system. (Requires admin authentication)
+
+Books:
+
+- **GET /api/books :** Retrieve a list of all books. (Requires no authentication)
+- **GET /api/books/{id} :** Retrieve details of a specific book by ID. (Requires no authentication)
+- **POST /api/books :** Add a new book to the library. (Requires admin authentication)
+- **PUT /api/books/{id} :** Update an existing book's information. (Requires admin authentication)
+- **DELETE /api/books/{id} :** Remove a book from the library. (Requires admin authentication)
+
+Borrowing records:
+
+- **POST /api/borrow/{bookId}/patron/{patronId}: :** Borrow a book. (Requires patron authentication)
+- **PUT /api/return/{bookId}/patron/{patronId} :** Return a borrowed book. (Requires patron authentication)
 
 ## Authentication
 
