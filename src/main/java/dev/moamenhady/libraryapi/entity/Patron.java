@@ -16,7 +16,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Data
 public class Patron {
 
-    public static final String ROLE_USER = "USER";
+    public static final String ROLE_USER = "ROLE_USER";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

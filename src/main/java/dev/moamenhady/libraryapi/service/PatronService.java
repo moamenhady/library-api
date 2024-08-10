@@ -3,6 +3,7 @@ package dev.moamenhady.libraryapi.service;
 import dev.moamenhady.libraryapi.entity.Patron;
 import dev.moamenhady.libraryapi.repository.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +12,14 @@ import java.util.Optional;
 
 @Service
 public class PatronService {
+
     private final PatronRepository patronRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PatronService(PatronRepository patronRepository) {
+    public PatronService(PatronRepository patronRepository , PasswordEncoder passwordEncoder) {
         this.patronRepository = patronRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Patron> getAllPatrons() {
@@ -27,6 +31,7 @@ public class PatronService {
     }
 
     public Patron createPatron(Patron patron) {
+        patron.setPassword(passwordEncoder.encode(patron.getPassword()));
         return patronRepository.save(patron);
     }
 

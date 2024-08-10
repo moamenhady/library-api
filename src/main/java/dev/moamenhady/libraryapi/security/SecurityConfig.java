@@ -21,13 +21,13 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/books/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/books").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/books/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN")
 
                         .requestMatchers(HttpMethod.GET, "/api/patrons/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/patrons/**").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/patrons/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/patrons").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/patrons/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/patrons/**").hasRole("ADMIN")
 
                         .requestMatchers(HttpMethod.POST, "/api/borrow/**").hasRole("USER")

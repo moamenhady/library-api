@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 public class Admin {
 
-    public static final String ROLE_ADMIN = "ADMIN";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

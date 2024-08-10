@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord, Long> {
-    Optional<BorrowingRecord> findBorrowingRecordByBookIdAndPatronId(Long bookId, Long patronId);
+    Optional<BorrowingRecord> findBorrowingRecordByBookIdAndPatronIdAndReturnDateIsNull(Long bookId, Long patronId);
 }

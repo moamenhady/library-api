@@ -60,9 +60,9 @@ public class BorrowingRecordService {
         book.get().setBorrowed(false);
         bookService.updateBook(bookId, book.get());
 
-        return borrowingRecordRepository.findBorrowingRecordByBookIdAndPatronId(bookId, patronId)
+        return borrowingRecordRepository.findBorrowingRecordByBookIdAndPatronIdAndReturnDateIsNull(bookId, patronId)
                 .map(existingRecord -> {
-                    existingRecord.setBorrowDate(LocalDate.now());
+                    existingRecord.setReturnDate(LocalDate.now());
                     return borrowingRecordRepository.save(existingRecord);
                 });
     }
